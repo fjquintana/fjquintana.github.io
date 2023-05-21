@@ -1,6 +1,8 @@
 const url = "https://backend-pwa.onrender.com";
 
 let requests = [];
+let notificationPermission = false;
+let notificationToken = undefined;
 
 const executeRequestQueue = async () => {
     const requestQueue = requests;
@@ -22,13 +24,16 @@ const executeRequestQueue = async () => {
             headers: request["headers"],
         }
         if (request.body) {
-            requestData.body = request.body
+            const body = JSON.parse(request.body)
+            body.token = notificationToken;
+            requestData.body = JSON.stringify(body);
         }
+
+        console.log(requestData.body)
 
         const req = new Request(url, requestData);
         const res = await fetch(req);
 
-        console.log(res)
 
         if(res.statusText == "network miss"){
             requestQueue.unshift([request, id]);
@@ -164,10 +169,41 @@ function deleteNotes() {
     parent.replaceChildren(...newChildren);
 }
 
+const getNotificationToken = () => {
+    console.log("getNotificationToken", notificationPermission)
+    if(!notificationPermission) return;
+    // if(notificationToken != undefined) return;
+    messaging.getToken()
+             .then((token) =>{
+                notificationToken = token;
+                console.log("set notification token", token)
+                saveNotificationToken();
+            })
+             .catch((e) => console.log(e))
+}
+
+const saveNotificationToken = () => {
+    const request = {
+        "url": `${url}/token`,
+        "method": "POST",
+        "headers": {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        "type": "saveToken",
+        "body": JSON.stringify({
+            "token": notificationToken,
+            "notepadName": notepad["notepadName"]
+        })
+    }
+
+    executeRequest(request, undefined);
+}
+
 const sync = async () => {
+    getNotificationToken();
     await executeRequestQueue();
     await updateState();
-    // sortNotes()
 }
 
 const loadNotepadData = () => {
@@ -375,9 +411,6 @@ const notesToJson = () => {
     download('notes.json', notepadString)
 }
 
-loadNotepadData();
-sync()
-
 const firebaseConfig = {
     apiKey: "AIzaSyCwQAkUO7gIGop8ykEL9oyGuY5376iTSBw",
     authDomain: "anonynoteclone.firebaseapp.com",
@@ -392,18 +425,32 @@ firebase.initializeApp(firebaseConfig);
 
 const messaging = firebase.messaging();
 
-// function requestPermission() {
-messaging.requestPermission()
-         .then(() => {
-            console.log("Permission Granted");
-            return messaging.getToken();
-         })
-         .then((token) => {
-            console.log(token)
-         })
-         .catch((e) =>{
-            console.log("Error", e)
-         })
+const requestPermission = async () => {
+    messaging.requestPermission()
+            .then(() => {
+                notificationPermission = true;
+            })
+            .then(getNotificationToken);
+    
+}
+
+requestPermission();
+
+loadNotepadData();
+sync()
+
+// // function requestPermission() {
+// messaging.requestPermission()
+//          .then(() => {
+//             console.log("Permission Granted");
+//             return messaging.getToken();
+//          })
+//          .then((token) => {
+//             console.log(token)
+//          })
+//          .catch((e) =>{
+//             console.log("Error", e)
+//          })
 messaging.onMessage((payload) => {
     alert('Hay informacion nueva, haz Refresh!')
 })
