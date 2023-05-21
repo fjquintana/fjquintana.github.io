@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    <!-- Responsive -->
+    <!-- <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
+
+    <!-- Title -->
+    <title>Anonynote</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link href='https://unpkg.com/css.gg@2.0.0/icons/css/menu.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+
+    <!-- Meta Tags required for Progressive Web App -->
+    <!-- <meta name="anonynote" content="#aa7700">
+    <meta name="theme-color" content="black"> -->
+
+    <!-- Manifest File link -->
+    <link rel="manifest" href="../../manifest.webmanifest">
+</head>
+
+<body>
+    <br>
+    <br>
+    <br>
+
+    <ul id="navbar-top">
+      <li><a href="#online">online</a></li>
+      <li style="float:right"><a href="#about">
+        <i class="gg-menu"></i>
+      </a></li>
+    </ul>
+
+    <br>
+    <br>
+
+    <div>
+        <input type="text" id="note-name" autocomplete="off" value="hello">
+        </input>
+    </div>
+
+    <br>
+
+    <div class="input-container">
+        <input type="text" id="note-description" placeholder="Enter a notepad description" onchange="handleDescriptionChange()"></input>
+    </div>
+    
+    <br>
+
+    <div>
+        <ul id="navbar-functions">
+            <li><a class="" id="nav-home" href="../../index.html">
+                <i class='fas fa-home'></i>
+                <span>Home</span>
+            </a></li>
+            <li onclick="deleteNotes()"><a class="active" id="nav-delete" href="#delete">
+                <i class='far fa-trash-alt'></i> 
+                <span>Delete all</span>
+            </a></li>
+            <li onclick="sortNotes()"><a class="active" id="nav-sort" href="#sort">
+                <i class='fas fa-sliders-h'></i> 
+                <span>Sort</span>
+            </a></li>
+            <li onclick="notesToJson()"><a class="active" id="nav-json" href="#json">
+                <i class='fas fa-code'></i> 
+                <span>JSON</span>
+            </a></li>
+            <li><a class="active" id="nav-refresh" href="#refresh" onclick="sync()">
+                <i class='fas fa-redo'></i> 
+                <span>Refresh</span>
+            </a></li>
+        </ul>
+    </div>
+    
+    <br>
+    
+    <div class="input-container">
+        <input type="text" id="short-note" placeholder="Enter a short note"></input>
+        <button id="short-note-button" onclick="createNote()">
+            <i class="material-icons" style="color: white">subdirectory_arrow_left</i>
+        </button>
+    </div>
+    
+    <br>
+
+    <div id="note-table">
+        <div id="table-header">Notes</div>
+        
+        <div id="notes">
+        </div>
+        
+    </div>
+
+    <br>
+    <!-- <button id="fetchButton">Fetch</button> -->
+    <script src='https://www.gstatic.com/firebasejs/4.2.0/firebase-app.js'></script>
+    <script src='https://www.gstatic.com/firebasejs/4.2.0/firebase-messaging.js'></script>
+    <!-- <script src="app.js"></script> -->
+    <script src="../scripts/functionality.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+{
+    "name": "Anonynote Copy PWA",
+    "short_name": "samplePWA",
+    "description": "Progressive Web App that copies Anonynote. Used for homework 4 of IIC3585",
+    "icons": [
+      {
+        "src": "icons/29.png",
+        "sizes": "29x29",
+        "type": "image/png"
+      },
+      {
+        "src": "icons/40.png",
+        "sizes": "40x40",
+        "type": "image/png"
+      },
+      {
+        "src": "icons/57.png",
+        "sizes": "57x57",
+        "type": "image/png"
+      },
+      {
+        "src": "icons/60.png",
+        "sizes": "60x60",
+        "type": "image/png"
+      },
+      {
+        "src": "icons/80.png",
+        "sizes": "80x80",
+        "type": "image/png"
+      },
+      {
+        "src": "icons/87.png",
+        "sizes": "87x87",
+        "type": "image/png"
+      },
+      {
+        "src": "icons/114.png",
+        "sizes": "114x114",
+        "type": "image/png"
+      },
+      {
+        "src": "icons/120.png",
+        "sizes": "120x120",
+        "type": "image/png"
+      },
+      {
+        "src": "icons/180.png",
+        "sizes": "180x180",
+        "type": "image/png"
+      },
+      {
+        "src": "icons/1024.png",
+        "sizes": "1024x1024",
+        "type": "image/png"
+      }
+    ],
+    "start_url": "/index.html",
+    "display": "fullscreen",
+    "theme_color": "#B12A34",
+    "background_color": "#B12A34"
+}
