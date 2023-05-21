@@ -152,7 +152,7 @@ function deleteNotes() {
     const parent = document.getElementById("notes");
     const newChildren = [];
 
-    for(const index in idAssociations){
+    for(const note of notepad.notes){
         const request = {
             "url": `${url}/notepad/${notepad["notepadName"]}/`,
             "method": "DELETE",
@@ -163,7 +163,7 @@ function deleteNotes() {
             "type": "deleteNote"
         };
 
-        executeRequest(request, index);
+        executeRequest(request, note.localId);
     }
 
     parent.replaceChildren(...newChildren);
