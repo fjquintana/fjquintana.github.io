@@ -49,7 +49,7 @@
         
         <br>
 
-        <div>
+        <!-- <div>
             <ul id="navbar-functions">
                 <li><a class="" id="nav-home" href="../../index.html">
                     <i class='fas fa-home'></i>
@@ -72,11 +72,11 @@
                     <span>Refresh</span>
                 </a></li>
             </ul>
-        </div>
+        </div> -->
 
         <div>
-            <div class="columns is-mobile custom-button-container">
-                <button class="button column is-large custom-button" id="nav-home" href="../../index.html">
+            <div class="custom-button-container columns is-mobile" id="notes-buttons-container">
+                <button class="button column custom-button" id="nav-home" href="../../index.html">
                     <div class="button-content">
                         <i class='fas fa-home'></i>
                         <div class="inner">
@@ -84,38 +84,36 @@
                         </div>
                     </div>
                 </button>
-                <button class="button column is-large custom-button" onclick="deleteNotes()">
+                <button class="button column custom-button" id="nav-delete" onclick="deleteNotes()">
                     <div class="button-content">
                         <i class='far fa-trash-alt'></i>
                         <div class="inner">
                             <span>Delete all</span>
                         </div>
                     </div>
-                    <!-- <i class='far fa-trash-alt'></i>
-                    <div class="helper"></div>
-                    <div class="inner">
-                        <span>Delete all</span>
-                    </div> -->
                 </button>
-                <button class="button column is-large custom-button">
-                    <i class='fas fa-sliders-h'></i>
-                    <div class="helper"></div>
-                    <div class="inner">
-                        <span>Sort</span>
+                <button class="button column custom-button" id="nav-sort" onclick="sortNotes()">
+                    <div class="button-content">
+                        <i class='fas fa-sliders-h'></i>
+                        <div class="inner">
+                            <span>Sort</span>
+                        </div>
                     </div>
                 </button>
-                <button class="button column is-large custom-button">
-                    <i class='fas fa-code'></i>
-                    <div class="helper"></div>
-                    <div class="inner">
-                        <span>JSON</span>
+                <button class="button column custom-button" id="nav-json" onclick="notesToJson()">
+                    <div class="button-content">
+                        <i class='fas fa-code'></i>
+                        <div class="inner">
+                            <span>JSON</span>
+                        </div>
                     </div>
                 </button>
-                <button class="button column is-large custom-button">
-                    <i class='fas fa-redo'></i>
-                    <div class="helper"></div>
-                    <div class="inner">
-                        <span>Refresh</span>
+                <button class="button column custom-button" id="nav-refresh" onclick="sync()">
+                    <div class="button-content">
+                        <i class='fas fa-redo'></i>
+                        <div class="inner">
+                            <span>Refresh</span>
+                        </div>
                     </div>
                 </button>
             </div>
@@ -152,11 +150,13 @@
         <br>
 
         <div id="note-table">
-            <div id="table-header">Notes</div>
-            
+            <div id="table-header">
+                <div id="table-title">
+                    Anonynote
+                </div>
+            </div>
             <div id="notes">
             </div>
-            
         </div>
     </div>
 
