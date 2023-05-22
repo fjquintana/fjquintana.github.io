@@ -341,7 +341,7 @@ input[type="checkbox"]:checked::before {
 }
 
 
-@media (pointer:none), (pointer:coarse) {
+@media only screen and (max-width: 1000px) {
     .note {
         height: 170px;
     }
