@@ -332,9 +332,16 @@ input[type="checkbox"]:checked::before {
 }
 
 .note {
-    height: 170px;
+    height: 80px;
 }
 
 .note input {
     font-size: xx-large;
+}
+
+
+@media only screen and (max-width: 500px) {
+    .note {
+        height: 170px;
+    }
 }
