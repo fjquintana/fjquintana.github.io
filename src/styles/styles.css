@@ -341,7 +341,7 @@ input[type="checkbox"]:checked::before {
 }
 
 
-@media only screen and (max-width: 500px) {
+@media (pointer:none), (pointer:coarse) {
     .note {
         height: 170px;
     }
@@ -359,11 +359,8 @@ input[type="checkbox"]:checked::before {
 
     .input-container {
         display: flex; /* Use flexbox to layout the input element horizontally */
-        width: 100%; /* Subtract 10px from the width to account for the right margin */
+        width: 100%;
         height: 120px;
-        /* margin-left: 5%; */
-        /* margin-right: 5%; */
-        /* margin-top: 100px; */
     }
 
     #short-note-button {
