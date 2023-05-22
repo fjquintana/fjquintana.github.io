@@ -9,11 +9,11 @@
 
     <!-- Title -->
     <title>Anonynote</title>
-    <link rel="stylesheet" href="../styles/styles.css">
     <link href='https://unpkg.com/css.gg@2.0.0/icons/css/menu.css' rel='stylesheet'>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="../styles/styles.css">
     <!-- Meta Tags required for Progressive Web App -->
     <!-- <meta name="anonynote" content="#aa7700">
     <meta name="theme-color" content="black"> -->
@@ -23,78 +23,143 @@
 </head>
 
 <body>
+
+    <br>
     <br>
     <br>
     <br>
 
-    <ul id="navbar-top">
+    <!-- <ul id="navbar-top">
       <li><a href="#online">online</a></li>
       <li style="float:right"><a href="#about">
         <i class="gg-menu"></i>
       </a></li>
-    </ul>
+    </ul> -->
+    <div id="app-container">
+        <div>
+            <input type="text" id="note-name" autocomplete="off" value="hello">
+            </input>
+        </div>
 
-    <br>
-    <br>
+        <br>
 
-    <div>
-        <input type="text" id="note-name" autocomplete="off" value="hello">
-        </input>
-    </div>
-
-    <br>
-
-    <div class="input-container">
-        <input type="text" id="note-description" placeholder="Enter a notepad description" onchange="handleDescriptionChange()"></input>
-    </div>
-    
-    <br>
-
-    <div>
-        <ul id="navbar-functions">
-            <li><a class="" id="nav-home" href="../../index.html">
-                <i class='fas fa-home'></i>
-                <span>Home</span>
-            </a></li>
-            <li onclick="deleteNotes()"><a class="active" id="nav-delete" href="#delete">
-                <i class='far fa-trash-alt'></i> 
-                <span>Delete all</span>
-            </a></li>
-            <li onclick="sortNotes()"><a class="active" id="nav-sort" href="#sort">
-                <i class='fas fa-sliders-h'></i> 
-                <span>Sort</span>
-            </a></li>
-            <li onclick="notesToJson()"><a class="active" id="nav-json" href="#json">
-                <i class='fas fa-code'></i> 
-                <span>JSON</span>
-            </a></li>
-            <li><a class="active" id="nav-refresh" href="#refresh" onclick="sync()">
-                <i class='fas fa-redo'></i> 
-                <span>Refresh</span>
-            </a></li>
-        </ul>
-    </div>
-    
-    <br>
-    
-    <div class="input-container">
-        <input type="text" id="short-note" placeholder="Enter a short note"></input>
-        <button id="short-note-button" onclick="createNote()">
-            <i class="material-icons" style="color: white">subdirectory_arrow_left</i>
-        </button>
-    </div>
-    
-    <br>
-
-    <div id="note-table">
-        <div id="table-header">Notes</div>
-        
-        <div id="notes">
+        <div class="input-container">
+            <input type="text" id="note-description" placeholder="Enter a notepad description" onchange="handleDescriptionChange()"></input>
         </div>
         
+        <br>
+
+        <div>
+            <ul id="navbar-functions">
+                <li><a class="" id="nav-home" href="../../index.html">
+                    <i class='fas fa-home'></i>
+                    <span>Home</span>
+                </a></li>
+                <li onclick="deleteNotes()"><a class="active" id="nav-delete" href="#delete">
+                    <i class='far fa-trash-alt'></i> 
+                    <span>Delete all</span>
+                </a></li>
+                <li onclick="sortNotes()"><a class="active" id="nav-sort" href="#sort">
+                    <i class='fas fa-sliders-h'></i> 
+                    <span>Sort</span>
+                </a></li>
+                <li onclick="notesToJson()"><a class="active" id="nav-json" href="#json">
+                    <i class='fas fa-code'></i> 
+                    <span>JSON</span>
+                </a></li>
+                <li><a class="active" id="nav-refresh" href="#refresh" onclick="sync()">
+                    <i class='fas fa-redo'></i> 
+                    <span>Refresh</span>
+                </a></li>
+            </ul>
+        </div>
+
+        <div>
+            <div class="columns is-mobile custom-button-container">
+                <button class="button column is-large custom-button" id="nav-home" href="../../index.html">
+                    <div class="button-content">
+                        <i class='fas fa-home'></i>
+                        <div class="inner">
+                            <span>Home</span>
+                        </div>
+                    </div>
+                </button>
+                <button class="button column is-large custom-button" onclick="deleteNotes()">
+                    <div class="button-content">
+                        <i class='far fa-trash-alt'></i>
+                        <div class="inner">
+                            <span>Delete all</span>
+                        </div>
+                    </div>
+                    <!-- <i class='far fa-trash-alt'></i>
+                    <div class="helper"></div>
+                    <div class="inner">
+                        <span>Delete all</span>
+                    </div> -->
+                </button>
+                <button class="button column is-large custom-button">
+                    <i class='fas fa-sliders-h'></i>
+                    <div class="helper"></div>
+                    <div class="inner">
+                        <span>Sort</span>
+                    </div>
+                </button>
+                <button class="button column is-large custom-button">
+                    <i class='fas fa-code'></i>
+                    <div class="helper"></div>
+                    <div class="inner">
+                        <span>JSON</span>
+                    </div>
+                </button>
+                <button class="button column is-large custom-button">
+                    <i class='fas fa-redo'></i>
+                    <div class="helper"></div>
+                    <div class="inner">
+                        <span>Refresh</span>
+                    </div>
+                </button>
+            </div>
+        </div>
+        <!-- <div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-secondary">Left</button>
+            <button type="button" class="btn btn-secondary">Middle</button>
+            <button type="button" class="btn btn-secondary">Right</button>
+        </div> -->
+
+        <!-- <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    <button type="button" class="btn btn-secondary span4">Left</button>
+                </div>
+                <div class="col-sm">
+                    <button type="button" class="btn btn-secondary span4">Left</button>
+                </div>
+                <div class="col-sm">
+                    <button type="button" class="btn btn-secondary span4">Left</button>
+                </div>
+            </div>
+        </div> -->
+        
+        <br>
+        
+        <div class="input-container">
+            <input type="text" id="short-note" placeholder="Enter a short note"></input>
+            <button id="short-note-button" onclick="createNote()">
+                <i class="material-icons" style="color: white">subdirectory_arrow_left</i>
+            </button>
+        </div>
+        
+        <br>
+
+        <div id="note-table">
+            <div id="table-header">Notes</div>
+            
+            <div id="notes">
+            </div>
+            
+        </div>
     </div>
 
-    <br>
     <!-- <button id="fetchButton">Fetch</button> -->
     <script src='https://www.gstatic.com/firebasejs/4.2.0/firebase-app.js'></script>
     <script src='https://www.gstatic.com/firebasejs/4.2.0/firebase-messaging.js'></script>
