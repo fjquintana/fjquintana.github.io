@@ -23,6 +23,7 @@ body {
     font-size: xx-large;
     border: none;
     outline: none;
+    text-decoration: underline #004D66 5px;
 }
 #note-description {
     color: white;
@@ -38,7 +39,7 @@ body {
 .input-container {
     display: flex; /* Use flexbox to layout the input element horizontally */
     width: 100%; /* Subtract 10px from the width to account for the right margin */
-    height: 120px;
+    height: 80px;
     /* margin-left: 5%; */
     /* margin-right: 5%; */
     /* margin-top: 100px; */
@@ -54,8 +55,8 @@ body {
 
 #short-note-button {
     margin-left: 10px;
-    width: 120px;
-    height: 120px;
+    width: 80px;
+    height: 80px;
     background-color: #269CE9;
     cursor: pointer;
 }
@@ -188,14 +189,14 @@ li a:hover:not(.active) {
 
 #table-header { 
     background-color: #004D66;
-    min-height: 80px;
+    min-height: 50px;
     font-family: Snell Roundhand, cursive;
 }
 
 #table-title {
     font-size: xx-large;
     float: right;
-    padding-top: 10px;
+    padding-top: 0px;
     margin-right: 20px;
 }
 
@@ -291,8 +292,8 @@ input[type="checkbox"]:checked::before {
 }
 
 .custom-button-container {
-    min-height: 80px;
-    height: 80px;
+    min-height: 60px;
+    height: 60px;
     width: 100%;
     margin-left: 0;
     margin-right: 0;
@@ -340,8 +341,41 @@ input[type="checkbox"]:checked::before {
 }
 
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 900px) {
     .note {
         height: 170px;
+    }
+
+    #table-header {
+        min-height: 80px;
+    }
+
+    #table-title {
+        font-size: xx-large;
+        float: right;
+        padding-top: 10px;
+        margin-right: 20px;
+    }
+
+    .input-container {
+        display: flex; /* Use flexbox to layout the input element horizontally */
+        width: 100%; /* Subtract 10px from the width to account for the right margin */
+        height: 120px;
+        /* margin-left: 5%; */
+        /* margin-right: 5%; */
+        /* margin-top: 100px; */
+    }
+
+    #short-note-button {
+        margin-left: 10px;
+        width: 120px;
+        height: 120px;
+        background-color: #269CE9;
+        cursor: pointer;
+    }
+
+    .custom-button-container {
+        min-height: 80px;
+        height: 80px;
     }
 }
