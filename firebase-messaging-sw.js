@@ -16,9 +16,10 @@ firebase.initializeApp(firebaseConfig);
 const messaging = firebase.messaging();
 
 messaging.setBackgroundMessageHandler((payload) => {
-    const title = "Anonynote";
+    // console.log(payload)
+    const title = `Anonynote: ${payload.data.message}`;
     const options = {
-        body: payload.data.status
+        body: payload.message
     }
     return self.registration.showNotification(title, options)
 })
@@ -101,8 +102,8 @@ const networkFirstThenCache = async (request) => {
 self.addEventListener('fetch', event => {
     const {request} = event;
     // const url = new URL(request.url);
-    console.log("Logging from serviceWorker fetch event")
-    console.log("Using networkFirst Strategy...")
+    // console.log("Logging from serviceWorker fetch event")
+    // console.log("Using networkFirst Strategy...")
 
     event.respondWith(networkFirstThenCache(request));
 });
