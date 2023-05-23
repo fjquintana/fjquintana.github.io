@@ -1,6 +1,6 @@
 {
     "name": "Anonynote Copy PWA",
-    "short_name": "samplePWA",
+    "short_name": "AnonynotePWA",
     "description": "Progressive Web App that copies Anonynote. Used for homework 4 of IIC3585",
     "icons": [
       {
