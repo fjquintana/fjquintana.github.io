@@ -269,6 +269,29 @@ input[type="checkbox"]:checked::before {
 .note p {
     width: 380px;
     word-wrap: break-word;
+    background-color: #000000;
+}
+
+.note textarea {
+    font-size:x-large;
+    border: none;
+    outline: none;
+    width: 380px;
+    resize: none;
+}
+
+.note .disabled-edit{
+    word-wrap: break-word;
+    color: white;
+    background-color: transparent;
+    overflow-y: hidden; /* Hide vertical scrollbar */
+}
+
+.note .enabled-edit{
+    word-wrap: break-word;
+    color: black;
+    background-color: white;
+    overflow-y: hidden; /* Hide vertical scrollbar */
 }
 
 #app-container {

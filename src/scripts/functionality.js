@@ -66,8 +66,10 @@ const executeRequest = async (request, id) => {
 }
 
 const createNote = async() =>{
-
-    const noteText = document.getElementById("short-note").value;
+    const shortNote = document.getElementById("short-note");
+    noteText = shortNote.value;
+    shortNote.value = ""
+    console.log("WWWWHEJWIEOJR")
 
     const note = newNote(noteText, nextID);
     
@@ -129,6 +131,17 @@ function deleteNote(index) {
             newChildren.push(children[idx])
         }
     }
+    
+
+    // modify local id
+    // pesimo codigo pero funciona
+    newChildren.forEach( (child, index) => {
+        // child.localId = index;
+        // child.children[0].children[0].onclick = `deleteNote(${index})`
+        console.log("WTFF")
+        child.children[0].children[1].setAttribute("onclick", `editNote(${index})`)
+        child.children[1].setAttribute("onclick", `colorNote(${index})`)
+    });
 
     notepad.notes.splice(deleteIdx, 1);
 
@@ -167,6 +180,20 @@ function deleteNotes() {
     }
 
     parent.replaceChildren(...newChildren);
+}
+
+function editNote(index) {
+    const note = document.getElementById("notes").children[index];
+    const textArea = note.getElementsByTagName("textarea")[0];
+
+    if (textArea.readOnly) {
+        textArea.setAttribute("class", "enabled-edit");
+    } else {
+        textArea.setAttribute("class", "disabled-edit");
+
+    }
+    textArea.readOnly = !textArea.readOnly;
+
 }
 
 const getNotificationToken = () => {
@@ -315,6 +342,7 @@ const sendEditRequest = (localId, newText) => {
 }
 
 const newNote = (noteText, id) => {
+
     const note = document.createElement("div");
     note.setAttribute("class", "note");
     note.id = id;
@@ -330,8 +358,10 @@ const newNote = (noteText, id) => {
     trash.setAttribute("onclick", `deleteNote(${id})`);
     iconList.appendChild(trash);
 
-    iconList.appendChild(document.createElement("i"))
-        .setAttribute("class", "fas fa-pencil-alt");
+    const edit = document.createElement("i")
+    edit.setAttribute("class", "fas fa-pencil-alt");
+    edit.setAttribute("onclick", `editNote(${id})`);
+    iconList.appendChild(edit)
     // iconList.appendChild(document.createElement("i"))
         // .setAttribute("class", "fas fa-palette");
 
@@ -344,9 +374,13 @@ const newNote = (noteText, id) => {
     // const p = document.createElement("p");
     // p.innerHTML = noteText;
     // note.appendChild(p);
-    const noteTextInput = document.createElement("input");
-    noteTextInput.setAttribute("type", "text");
+    const noteTextInput = document.createElement("textarea");
+    // noteTextInput.setAttribute("type", "text");
+    noteTextInput.setAttribute("cols", "30");
+    noteTextInput.setAttribute("class", "disabled-edit");
+    noteTextInput.readOnly = true;
     noteTextInput.value = String(noteText);
+    noteTextInput.style.height = ""; // Reset the height
     noteTextInput.addEventListener("change", (e) => sendEditRequest(id, noteTextInput.value));
     note.appendChild(noteTextInput);
 
