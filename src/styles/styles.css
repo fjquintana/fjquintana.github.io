@@ -399,3 +399,23 @@ input[type="checkbox"]:checked::before {
         height: 80px;
     }
 }
+
+/* NOTIFICATION  */
+  
+.notification {
+    font-size: 40px;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    padding: 10px;
+    background-color: #f1f1f1;
+    color: #333;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.fade-out {
+    opacity: 0;
+}

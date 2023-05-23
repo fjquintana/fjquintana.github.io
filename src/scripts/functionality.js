@@ -486,5 +486,20 @@ sync()
 //             console.log("Error", e)
 //          })
 messaging.onMessage((payload) => {
-    alert('Hay informacion nueva, haz Refresh!')
+    // alert('Hay informacion nueva, haz Refresh!')
+    showAlert("Hay informacion nueva, haz Refresh!", 6000);
 })
+
+function showAlert(message, duration) {
+  var notification = document.getElementById("notification");
+  notification.innerHTML = message;
+  notification.style.display = "block";
+  notification.classList.remove("fade-out");
+  
+  setTimeout(function() {
+    notification.classList.add("fade-out");
+    setTimeout(function() {
+      notification.style.display = "none";
+    }, 500); // Additional delay for fade-out animation
+  }, duration);
+}
