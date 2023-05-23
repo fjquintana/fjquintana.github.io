@@ -6,7 +6,8 @@ let notificationToken = undefined;
 
 const executeRequestQueue = async () => {
     const requestQueue = requests;
-    if(requestQueue.length == 0) return;
+    let queueExecuted = true;
+    if(requestQueue.length == 0) return queueExecuted;
     while(requestQueue.length > 0){
         const [request, id] = requestQueue.shift();
         
@@ -37,6 +38,7 @@ const executeRequestQueue = async () => {
 
         if(res.statusText == "network miss"){
             requestQueue.unshift([request, id]);
+            queueExecuted = false
             break;
         }
         else{
@@ -57,6 +59,7 @@ const executeRequestQueue = async () => {
         }
     }
     console.log(idAssociations)
+    return queueExecuted;
 }
 
 const executeRequest = async (request, id) => {
@@ -229,8 +232,10 @@ const saveNotificationToken = () => {
 
 const sync = async () => {
     getNotificationToken();
-    await executeRequestQueue();
-    await updateState();
+    let executed = await executeRequestQueue();
+    if (executed) {
+        await updateState();
+    }
 }
 
 const loadNotepadData = () => {
@@ -300,6 +305,8 @@ const parseNotepadNotes = (notepadData) => {
 
 const updateState = async () => {
     const res = await fetch(`${url}/notepad/${notepad["notepadName"]}`, {method: "GET"});
+
+    console.log(res);
 
     if(res.statusText == "cache-network miss"){
         console.log("No connection couldnt update ");

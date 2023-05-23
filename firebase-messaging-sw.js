@@ -27,7 +27,19 @@ const staticAssets = [
     './',
     './index.html',
     './src/styles/styles.css',
-    './src/scripts/functionality.js'
+    './src/scripts/functionality.js',
+    './src/scripts/index.js',
+    './icons/29.png',
+    './icons/40.png',
+    './icons/57.png',
+    './icons/58.png',
+    './icons/60.png',
+    './icons/80.png',
+    './icons/87.png',
+    './icons/114.png',
+    './icons/120.png',
+    './icons/180.png',
+    './icons/1024.png'
 ];
 
 const cacheName = 'notesCache';
